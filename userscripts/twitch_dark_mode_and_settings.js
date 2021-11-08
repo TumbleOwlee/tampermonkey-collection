@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Twitch Dark Theme without login and settings
+// @name         Twitch Dark Theme without login
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Automatically activate dark theme without login and handle settings
+// @description  Automatically activate dark theme without login
 // @author       David Loewe
 // @match        *://*.twitch.tv/*
 // @icon         https://www.google.com/s2/favicons?domain=twitch.tv
@@ -15,7 +15,17 @@
 
     var id = setInterval(callback, 250)
     var cid = setInterval(manage_settings, 250)
+    var hid = setInterval(hide_chat, 250)
     var sid;
+
+    function hide_chat()
+    {
+        if(document.querySelectorAll('[aria-label="Collapse Chat"]')[0])
+        {
+            document.querySelectorAll('[aria-label="Collapse Chat"]')[0].click()
+            clearInterval(hid)
+        }
+    }
 
     function callback()
     {
