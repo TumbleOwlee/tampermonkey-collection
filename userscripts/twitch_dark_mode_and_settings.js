@@ -16,6 +16,7 @@
     var id = setInterval(callback, 250)
     var cid = setInterval(manage_settings, 250)
     var hid = setInterval(hide_chat, 250)
+    var hid_nav = setInterval(hide_nav, 250)
     var sid;
 
     function hide_chat()
@@ -24,6 +25,15 @@
         {
             document.querySelectorAll('[aria-label="Collapse Chat"]')[0].click()
             clearInterval(hid)
+        }
+    }
+
+    function hide_nav()
+    {
+        if(document.querySelectorAll('[aria-label="Collapse Side Nav"]')[0])
+        {
+            document.querySelectorAll('[aria-label="Collapse Side Nav"]')[0].click()
+            clearInterval(hid_nav)
         }
     }
 
